@@ -116,6 +116,7 @@ jobs:
           sudo gem install fpm
           sudo apt-get install -y debsigs
           fpm -t deb \
+            --name "${NAME}" \
             -v "${{ needs.calculate_version.outputs.version }}" \
             -p "dist/${NAME}_${{ needs.calculate_version.outputs.version }}_linux_${{ matrix.debian }}.deb" \
             --architecture ${{ matrix.debian }} \
@@ -133,6 +134,7 @@ jobs:
           set -xeuo pipefail
           sudo gem install fpm
           fpm -t rpm \
+            --name "${NAME}" \
             -v "${{ needs.calculate_version.outputs.version }}" \
             -p "dist/${NAME}_${{ needs.calculate_version.outputs.version }}_linux_${{ matrix.rpm }}.rpm" \
             --architecture ${{ matrix.rpm }} \
