@@ -175,6 +175,4 @@ jobs:
           merge-multiple: true
       - name: Publish packages
         run: |-
-          wget -O fury-cli.deb https://github.com/gemfury/cli/releases/download/v0.23.0/fury-cli_0.23.0_linux_amd64.deb
-          sudo dpkg -i fury-cli.deb
-          fury migrate dist --as=sagernet --api-token ${{ secrets.FURY_TOKEN }}
+          ls dist | xargs -I {} curl -F "package=@dist/{}" -u "${{ secrets.FURY_TOKEN }}" -X POST https://push.fury.io/sagernet/

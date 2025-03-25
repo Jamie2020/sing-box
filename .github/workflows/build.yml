@@ -229,8 +229,8 @@ jobs:
           cd dist
           mkdir -p "${DIR_NAME}"
           cp ../LICENSE "${DIR_NAME}"
-          if [ '${{ matrix.os }}' = 'windoes' ]; then
-            cp sing-box.exe "${DIR_NAME}"
+          if [ '${{ matrix.os }}' = 'windows' ]; then
+            cp sing-box "${DIR_NAME}/sing-box.exe"
             zip -r "${DIR_NAME}.zip" "${DIR_NAME}"
           else
             cp sing-box "${DIR_NAME}"
