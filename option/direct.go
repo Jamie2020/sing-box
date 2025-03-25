@@ -14,7 +14,7 @@ type DirectInboundOptions struct {
 	OverridePort    uint16      `json:"override_port,omitempty"`
 }
 
-type _DirectOutboundOptions struct {
+type DirectOutboundOptions struct {
 	DialerOptions
 	// Deprecated: Use Route Action instead
 	OverrideAddress string `json:"override_address,omitempty"`
@@ -24,7 +24,6 @@ type _DirectOutboundOptions struct {
 	ProxyProtocol uint8 `json:"proxy_protocol,omitempty"`
 }
 
-type DirectOutboundOptions _DirectOutboundOptions
 
 func (d *DirectOutboundOptions) UnmarshalJSONContext(ctx context.Context, content []byte) error {
 	err := json.UnmarshalDisallowUnknownFields(content, (*_DirectOutboundOptions)(d))
